@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Splash</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>COLOR SPLASH</h1>
+    </div>
+
+    <!-- Color Boxes -->
+    <div id="color-container">
+      <div
+        class="color-box"
+        id="color1"
+        draggable="true"
+        ondragstart="drag(event)"
+      ></div>
+      <div
+        class="color-box"
+        id="color2"
+        draggable="true"
+        ondragstart="drag(event)"
+      ></div>
+      <div
+        class="color-box"
+        id="color3"
+        draggable="true"
+        ondragstart="drag(event)"
+      ></div>
+    </div>
+
+    <!-- Mixing Area -->
+    <div
+      id="mixing-area"
+      ondragover="allowDrop(event)"
+      ondrop="mixColors(event)"
+    >
+      <p id="drop-text">Drop colors here to mix</p>
+    </div>
+
+    <!--Buttons -->
+    <div class="buttons">
+      <button id="clear-mixing-button" onclick="clearMixingArea()">
+        Clear
+      </button>
+      <button id="reset-button" onclick="resetGame()">New Colors</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
