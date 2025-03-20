@@ -10,10 +10,10 @@ const colors = [
   "cyan",
 ];
 
-// Colors in the mixing area
-let mixedColors = [];
+// Stores selected colors for mixing
+let selectedColors = [];
 
-// Generate three distinct random colors
+// Generate three random colors
 function getRandomColors() {
   let selectedColors = [];
   while (selectedColors.length < 3) {
@@ -44,38 +44,28 @@ function setupGame() {
 
   document.getElementById("mixing-area").style.backgroundColor = "white";
 
-  mixedColors = [];
+  // Reset mixed colors array
+  selectedColors.length = 0;
 
   document.getElementById("drop-text").style.display = "block";
 }
 
-// Add dropping
-function allowDrop(event) {
-  event.preventDefault();
-}
+// Color selection
+function selectColor(element) {
+  let color = element.getAttribute("data-color");
 
-// Mix colors when dropped into mixing area
-function mixColors(event) {
-  event.preventDefault();
-  let color = event.dataTransfer.getData("text");
-
-  if (!mixedColors.includes(color)) {
-    mixedColors.push(color);
+  if (!selectedColors.includes(color)) {
+    selectedColors.push(color);
   }
 
-  // Mix colors and update background
-  let mixedColor = blendColors(mixedColors);
+  // Mix colors
+  let mixedColor = blendColors(selectedColors);
   document.getElementById("mixing-area").style.backgroundColor = mixedColor;
 
   document.getElementById("drop-text").style.display = "none";
 }
 
-// Set data transfer
-function drag(event) {
-  event.dataTransfer.setData("text", event.target.getAttribute("data-color"));
-}
-
-// Blend colors dynamically using RGB averaging
+// Function to blend colors
 function blendColors(colorArray) {
   if (colorArray.length === 0) return "white";
 
@@ -117,13 +107,13 @@ function hexToRgb(color) {
 
 // Reset the entire game
 function resetGame() {
-  mixedColors = [];
+  selectedColors = [];
   setupGame();
 }
 
 // Clear only the mixing area
 function clearMixingArea() {
-  mixedColors = [];
+  selectedColors = [];
   document.getElementById("mixing-area").style.backgroundColor = "white";
   document.getElementById("drop-text").style.display = "block";
 }
