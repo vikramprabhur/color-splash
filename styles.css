@@ -28,13 +28,10 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 10px;
-    cursor: grab;
+    cursor:pointer;
     transition: transform 0.3s;
 }
 
-.color-box:active {
-    cursor: grabbing;
-}
 
 #mixing-area {
     width: 200px;
@@ -78,7 +75,3 @@ button {
     flex-direction: row;
     gap: 10px;
 }
-
-/* button:hover {
-    background: navy;
-} */
